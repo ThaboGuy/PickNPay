@@ -1,0 +1,27 @@
+<form class="addSupplier-form" #addSupplier="ngForm" (ngSubmit)="onSubmit(addSupplier)">
+  <input type="hidden" name="SupplierID" #SupplierID="ngModel" [(ngModel)] ="supplierService.selectedSupplier.InventorySupplier1" >
+
+<div class="form-group">
+
+  <div class="form-group col-md-10">
+     <label>Supplier Name:</label>
+    <input class="form-control" name="FirstName" #FirstName="ngModel"[(ngModel)]="supplierService.selectedSupplier.FirstName" placeholder="Supplier Name" required>
+    <div class="validation-error" *ngIf="FirstName.invalid && FirstName.touched">This Field Is Required</div>
+  </div>
+
+
+ </div>
+<div class="form-group col-md-10">
+   <label>Email:</label>
+   <input type="email" class="form-control" name="Email" #Email="ngModel"[(ngModel)]="supplierService.selectedSupplier.Email" placeholder="Email" required>
+   <div class="validation-error" *ngIf="Email.invalid && Email.touched">Invalid Email</div>
+
+   <label>Password:</label>
+   <input type="password" class="form-control" name="Password" #Password="ngModel"[(ngModel)]="supplierService.selectedSupplier.Password" placeholder="Password" required minlength="4"> 
+   <div class="validation-error" *ngIf="Password.invalid && Password.touched">This Field Is Required And The Password Must Be More Than 4 Characters</div>
+
+</div>
+
+<div class="form-group col-md-10">
+<button [disabled] = "!addSupplier.valid" type="submit" class="btn btn-lg btn-block btn-info"><i class="fas fa-save"></i> Add Supplier</button>
+</div>
